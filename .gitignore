@@ -1,0 +1,25 @@
+# Xcode
+**/*.xcuserdata
+**/*.xcworkspace
+**/xcuserdata/
+**/DerivedData/
+**/build/
+*.xcuserstate
+.DS_Store
+
+.build/
+.swiftpm/
+
+# Archives
+*.xcarchive
+
+# Device Data
+*.deviceids
+
+# Generated Files
+*.moved-aside
+*.xcuserstate
+*.swp
+*.swo
+*.tmp
+
