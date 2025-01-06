@@ -8,14 +8,32 @@
 import UIKit
 import MGTooltips
 
-class MGTooltipsDemo: UIViewController {
+import UIKit
+
+class MGTooltipsDemo: UIViewController, MGTooltipDelegate {
+    func tooltipsDidStarted() {
+        print("tooltips started")
+    }
     
-    let button = UIButton(type: .system)
-    let label = UILabel()
-    let viewBox = UIView()
-    var navigationButton: UIBarButtonItem!
+    func tooltipDidShowed(at index: Int, item: MGTooltips.TooltipItem) {
+        print("tooltip \(index) is showed")
+    }
     
-    var tooltip: TooltipManager?
+    func tooltipDidDismissed(at index: Int, item: MGTooltips.TooltipItem) {
+        print("tooltip \(index) is dismissed")
+    }
+    
+    func tooltipsDidCompleted() {
+        print("All tooltips completed!")
+    }
+    
+    private let label = UILabel()
+    private let boxView = UIView()
+    private let button = UIButton(type: .system)
+    private var navBarButton: UIBarButtonItem!
+    
+    // Our new manager:
+    private var tooltipManager: MGTooltip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,96 +41,74 @@ class MGTooltipsDemo: UIViewController {
         setupNavigationBar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        setupTooltips()
-    }
-    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
-        // Button Setup
-        button.setTitle("Show Tooltips", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showTooltips), for: .touchUpInside)
-        
-        // Label Setup
-        label.text = "Tooltip on Label"
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "This is a label"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        // Box View Setup
-        viewBox.backgroundColor = .systemTeal
-        viewBox.layer.cornerRadius = 10
-        viewBox.translatesAutoresizingMaskIntoConstraints = false
+        boxView.backgroundColor = .systemTeal
+        boxView.layer.cornerRadius = 10
+        boxView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Add to View
-        view.addSubview(button)
+        button.setTitle("Show Tooltips", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showTooltips), for: .touchUpInside)
+        
         view.addSubview(label)
-        view.addSubview(viewBox)
+        view.addSubview(boxView)
+        view.addSubview(button)
         
-        // Layout Constraints
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             
-            viewBox.widthAnchor.constraint(equalToConstant: 100),
-            viewBox.heightAnchor.constraint(equalToConstant: 100),
-            viewBox.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            viewBox.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            boxView.widthAnchor.constraint(equalToConstant: 100),
+            boxView.heightAnchor.constraint(equalToConstant: 100),
+            boxView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            boxView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Tooltips Demo"
-        navigationButton = UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(showTooltips))
-        navigationItem.rightBarButtonItem = navigationButton
-    }
-    
-    private func setupTooltips() {
-        // Tooltip on Label
-        let labelTooltip = TooltipItem(
-            target: label,
-            message: "This is a label tooltip.",
-            side: .bottom
-        )
-        
-        // Tooltip on Box View
-        let boxTooltip = TooltipItem(
-            target: viewBox,
-            message: "This is a tooltip on the box view.",
-            side: .top
-        )
-        
-        // Tooltip on Button
-        let buttonTooltip = TooltipItem(
-            target: button,
-            message: "Click here to see more tooltips!",
-            side: .top
-        )
-        
-        // Tooltip on Navigation Button
-        let navTooltip = TooltipItem(
-            target: navigationButton as Any,
-            message: "This is a tooltip for the navigation item.",
-            side: .bottom
-        )
-        
-        // Initialize Tooltip Manager
-        tooltip = TooltipManager(tooltips: [labelTooltip, boxTooltip, buttonTooltip, navTooltip])
-        tooltip?.onCompletion = {
-            print("All tooltips completed!")
-        }
-        
-        // Start Tooltip Sequence
-        tooltip?.start()
+        navBarButton = UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(showTooltips))
+        navigationItem.rightBarButtonItem = navBarButton
     }
     
     @objc private func showTooltips() {
-        setupTooltips()
+        // 1) Create manager with optional key
+        tooltipManager = MGTooltip()
+        tooltipManager?.buttonConfiguration = .none
+        tooltipManager?.canTapScreenToDismiss = true
+        tooltipManager?.delegate = self
+        
+        let labelTooltip = TooltipItem(
+            target: label,
+            message: "Here is some info about the label.",
+            side: .bottom
+        )
+        let boxTooltip = TooltipItem(
+            target: boxView,
+            message: "This teal box can be anything you want.",
+            side: .top
+        )
+        let buttonTooltip = TooltipItem(
+            target: button,
+            message: "Tap here to show all tooltips!",
+            side: .top
+        )
+        let navTooltip = TooltipItem(
+            target: navBarButton as Any,
+            message: "This is a tooltip on the nav bar button.",
+            side: .bottom
+        )
+        
+        tooltipManager?.appendTooltips([labelTooltip, boxTooltip, buttonTooltip, navTooltip])
+        
+        tooltipManager?.start()
     }
 }

@@ -17,10 +17,12 @@
 		42C991C52D2BEF6300155FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BB2D2BEF6300155FE1 /* Assets.xcassets */; };
 		42C991C72D2BEF6300155FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */; };
 		42C991CE2D2BEF6500155FE1 /* MGTooltips.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C991C82D2BEF6500155FE1 /* MGTooltips.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42C991CF2D2BEF6500155FE1 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C92D2BEF6500155FE1 /* OverlayView.swift */; };
+		42C991CF2D2BEF6500155FE1 /* MGOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */; };
 		42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */; };
-		42C991D12D2BEF6500155FE1 /* TooltipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */; };
-		42C991D22D2BEF6500155FE1 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CC2D2BEF6500155FE1 /* TooltipView.swift */; };
+		42C991D12D2BEF6500155FE1 /* MGTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */; };
+		42C991D22D2BEF6500155FE1 /* MGTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */; };
+		42C991DD2D2C092600155FE1 /* MGTooltipAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */; };
+		42C991DF2D2C094100155FE1 /* MGTooltipDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,10 +61,12 @@
 		42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipsDemo.swift; sourceTree = "<group>"; };
 		42C991C82D2BEF6500155FE1 /* MGTooltips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTooltips.h; sourceTree = "<group>"; };
-		42C991C92D2BEF6500155FE1 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGOverlayView.swift; sourceTree = "<group>"; };
 		42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipComponents.swift; sourceTree = "<group>"; };
-		42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipManager.swift; sourceTree = "<group>"; };
-		42C991CC2D2BEF6500155FE1 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
+		42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltip.swift; sourceTree = "<group>"; };
+		42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipView.swift; sourceTree = "<group>"; };
+		42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipAppearance.swift; sourceTree = "<group>"; };
+		42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +128,9 @@
 		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
 			isa = PBXGroup;
 			children = (
+				42C991E02D2C11D600155FE1 /* Core */,
+				42C991E12D2C11DE00155FE1 /* UI */,
 				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
-				42C991C92D2BEF6500155FE1 /* OverlayView.swift */,
-				42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */,
-				42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */,
-				42C991CC2D2BEF6500155FE1 /* TooltipView.swift */,
 			);
 			path = MGTooltips;
 			sourceTree = "<group>";
@@ -143,6 +145,26 @@
 				42C991BC2D2BEF6300155FE1 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		42C991E02D2C11D600155FE1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */,
+				42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */,
+				42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */,
+				42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		42C991E12D2C11DE00155FE1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */,
+				42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,10 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42C991CF2D2BEF6500155FE1 /* OverlayView.swift in Sources */,
+				42C991CF2D2BEF6500155FE1 /* MGOverlayView.swift in Sources */,
 				42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */,
-				42C991D12D2BEF6500155FE1 /* TooltipManager.swift in Sources */,
-				42C991D22D2BEF6500155FE1 /* TooltipView.swift in Sources */,
+				42C991DF2D2C094100155FE1 /* MGTooltipDelegate.swift in Sources */,
+				42C991DD2D2C092600155FE1 /* MGTooltipAppearance.swift in Sources */,
+				42C991D12D2BEF6500155FE1 /* MGTooltip.swift in Sources */,
+				42C991D22D2BEF6500155FE1 /* MGTooltipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

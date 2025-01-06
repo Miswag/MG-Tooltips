@@ -1,5 +1,5 @@
 //
-//  Untitled 2.swift
+//  MGTooltipView.swift
 //  MGTooltips
 //
 //  Created by Moses Kh. on 01/12/2024.
@@ -7,78 +7,85 @@
 
 import UIKit
 
-public class TooltipView: UIView {
+/// The actual tooltip bubble with arrow, message label, optional buttons, etc.
+public class MGTooltipView: UIView {
     
-    // MARK: - Properties
+    // MARK: - UI Elements
     
-    public let messageLabel = UILabel()
-    public let arrowSize = CGSize(width: 16, height: 8)
-    public let side: TooltipSide
-    public let targetFrame: CGRect
+    private let messageLabel = UILabel()
+    private let contentView = UIView()
+    private let arrowView = UIView()
     
-    public let contentView = UIView()
-    public let arrowView = UIView()
-    public var referenceView: UIView?
+    private let previousButton = UIButton(type: .system)
+    private let nextButton = UIButton(type: .system)
+    private let buttonStackView = UIStackView()
     
-    public let previousButton = UIButton(type: .system)
-    public let nextButton = UIButton(type: .system)
-    public let buttonStackView = UIStackView()
-    
+    // Callbacks
     var onPrevious: (() -> Void)?
     var onNext: (() -> Void)?
     
-    public var arrowCenterXConstraint: NSLayoutConstraint?
-    public var arrowCenterYConstraint: NSLayoutConstraint?
+    // Constraints
+    private var arrowCenterXConstraint: NSLayoutConstraint?
+    private var arrowCenterYConstraint: NSLayoutConstraint?
+    private var buttonStackCenterXConstraint: NSLayoutConstraint?
+    private var buttonStackLeadingConstraint: NSLayoutConstraint?
     
-    public var minimumWidthConstraint: NSLayoutConstraint?
-    public var maximumWidthConstraint: NSLayoutConstraint?
+    // Tooltip data
+    private let side: TooltipSide
+    private let targetFrame: CGRect
+    private var referenceView: UIView?
     
-    public let buttonConfig: TooltipButtonConfiguration
+    // Appearance/Manager
+    /// Note: We cast the manager as `MGTooltipAppearance & AnyObject` so we can read the styling (including button config).
+    private weak var manager: (MGTooltipAppearance & AnyObject)?
     
-    public var isFirst = true
-    public var isLast = false
+    // State
+    private var isFirst = true
+    private var isLast = false
     
-    public var buttonStackCenterXConstraint: NSLayoutConstraint?
-    public var buttonStackLeadingConstraint: NSLayoutConstraint?
+    // MARK: - Init
     
-    // MARK: - Initializers
-    
-    public init(tooltipItem: TooltipItem, targetFrame: CGRect, buttonConfig: TooltipButtonConfiguration) {
+    init(tooltipItem: TooltipItem, targetFrame: CGRect, manager: MGTooltipAppearance & AnyObject) {
         self.side = tooltipItem.side
         self.targetFrame = targetFrame
-        self.buttonConfig = buttonConfig
+        self.manager = manager
         super.init(frame: .zero)
-        self.messageLabel.text = tooltipItem.message
+        
+        messageLabel.text = tooltipItem.message
+        
         setupView()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) not implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup Methods
+    // MARK: - Setup
     
     private func setupView() {
         setupMessageLabel()
         setupContentView()
         setupArrowView()
-        configureButtons()
+        setupButtons()
         setupButtonStackView()
-        addSubviews()
-        setupConstraints()
+        layoutUI()
         drawArrow()
     }
     
     private func setupMessageLabel() {
+        guard let appearance = manager else { return }
+        
         messageLabel.numberOfLines = 0
-        messageLabel.font = UIFont.systemFont(ofSize: 14)
-        messageLabel.textColor = .label
-        messageLabel.textAlignment = .natural
+        messageLabel.font = appearance.font
+        messageLabel.textColor = appearance.textColor
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupContentView() {
-        contentView.backgroundColor = .white
+        guard let appearance = manager else { return }
+        contentView.backgroundColor = appearance.backgroundColor
+        contentView.layer.cornerRadius = appearance.tooltipCornerRadius
+        contentView.layer.masksToBounds = true
         contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -87,26 +94,31 @@ public class TooltipView: UIView {
         arrowView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func configureButtons() {
+    private func setupButtons() {
+        guard let appearance = manager else { return }
+        
+        // Common button styling
         [previousButton, nextButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            $0.layer.cornerRadius = 12.5
+            $0.titleLabel?.font = appearance.buttonFont
+            $0.layer.cornerRadius = appearance.buttonCornerRadius
             $0.layer.masksToBounds = true
+            $0.layer.borderColor = appearance.buttonBorderColor.cgColor
+            $0.layer.borderWidth = appearance.buttonBorderWidth
             $0.widthAnchor.constraint(equalToConstant: 70).isActive = true
             $0.heightAnchor.constraint(equalToConstant: 25).isActive = true
             $0.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         }
         
+        // Previous
         previousButton.setTitle("previous", for: .normal)
-        previousButton.setTitleColor(.label, for: .normal)
-        previousButton.layer.borderColor = UIColor.black.cgColor
-        previousButton.layer.borderWidth = 1
+        previousButton.setTitleColor(appearance.buttonBorderColor, for: .normal)
         previousButton.backgroundColor = .clear
         
+        // Next
         nextButton.setTitle("next", for: .normal)
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.backgroundColor = .black
+        nextButton.setTitleColor(appearance.buttonTextColor, for: .normal)
+        nextButton.backgroundColor = appearance.buttonBackgroundColor
     }
     
     private func setupButtonStackView() {
@@ -118,25 +130,32 @@ public class TooltipView: UIView {
         buttonStackView.addArrangedSubview(nextButton)
     }
     
-    private func addSubviews() {
+    // MARK: - Layout (Unchanged)
+
+    private func layoutUI() {
         contentView.addSubview(messageLabel)
-        if buttonConfig != .none {
+        
+        if manager?.buttonConfiguration != TooltipButtonConfiguration.none {
             contentView.addSubview(buttonStackView)
         }
+        
         addSubview(contentView)
         addSubview(arrowView)
-    }
-    
-    private func setupConstraints() {
+        
+        // Label constraints
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             messageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            messageLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            messageLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
         ])
         
-        if buttonConfig != .none {
-            buttonStackLeadingConstraint = buttonStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
-            buttonStackCenterXConstraint = buttonStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        if manager?.buttonConfiguration != TooltipButtonConfiguration.none {
+            buttonStackLeadingConstraint = buttonStackView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor, constant: 12
+            )
+            buttonStackCenterXConstraint = buttonStackView.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
+            )
             
             NSLayoutConstraint.activate([
                 buttonStackView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 8),
@@ -149,39 +168,32 @@ public class TooltipView: UIView {
             ])
         }
         
-        // Constraints for contentView and arrowView
-        setupConstraintsForSide()
-    }
-    
-    private func setupConstraintsForSide() {
         switch side {
         case .top, .bottom:
-            setWidthConstraints(minWidth: 160, maxWidth: 200, priority: .required)
-            setupVerticalConstraints()
+            setupVerticalLayout()
             arrowCenterXConstraint = arrowView.centerXAnchor.constraint(equalTo: centerXAnchor)
             arrowCenterXConstraint?.isActive = true
         case .left, .right:
-            setWidthConstraints(minWidth: 160, maxWidth: 200, priority: UILayoutPriority(750))
-            setupHorizontalConstraints()
+            setupHorizontalLayout()
             arrowCenterYConstraint = arrowView.centerYAnchor.constraint(equalTo: centerYAnchor)
             arrowCenterYConstraint?.isActive = true
         }
     }
     
-    private func setWidthConstraints(minWidth: CGFloat, maxWidth: CGFloat, priority: UILayoutPriority) {
-        minimumWidthConstraint = contentView.widthAnchor.constraint(greaterThanOrEqualToConstant: minWidth)
-        minimumWidthConstraint?.isActive = true
+    private func setupVerticalLayout() {
+        guard let appearance = manager else { return }
         
-        maximumWidthConstraint = contentView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
-        maximumWidthConstraint?.isActive = true
-    }
-    
-    private func setupVerticalConstraints() {
+        let widthMin: CGFloat = 160
+        let widthMax: CGFloat = 200
+        
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            arrowView.widthAnchor.constraint(equalToConstant: arrowSize.width),
-            arrowView.heightAnchor.constraint(equalToConstant: arrowSize.height)
+            arrowView.widthAnchor.constraint(equalToConstant: appearance.arrowSize.width),
+            arrowView.heightAnchor.constraint(equalToConstant: appearance.arrowSize.height),
+            
+            contentView.widthAnchor.constraint(greaterThanOrEqualToConstant: widthMin),
+            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: widthMax)
         ])
         
         if side == .top {
@@ -190,7 +202,7 @@ public class TooltipView: UIView {
                 arrowView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
                 arrowView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
-        } else { // .bottom
+        } else { // bottom
             NSLayoutConstraint.activate([
                 arrowView.topAnchor.constraint(equalTo: topAnchor),
                 contentView.topAnchor.constraint(equalTo: arrowView.bottomAnchor),
@@ -199,12 +211,20 @@ public class TooltipView: UIView {
         }
     }
     
-    private func setupHorizontalConstraints() {
+    private func setupHorizontalLayout() {
+        guard let appearance = manager else { return }
+        
+        let widthMin: CGFloat = 160
+        let widthMax: CGFloat = 200
+        
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: topAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            arrowView.widthAnchor.constraint(equalToConstant: arrowSize.height),
-            arrowView.heightAnchor.constraint(equalToConstant: arrowSize.width)
+            arrowView.widthAnchor.constraint(equalToConstant: appearance.arrowSize.height),
+            arrowView.heightAnchor.constraint(equalToConstant: appearance.arrowSize.width),
+            
+            contentView.widthAnchor.constraint(greaterThanOrEqualToConstant: widthMin),
+            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: widthMax)
         ])
         
         if side == .left {
@@ -213,7 +233,7 @@ public class TooltipView: UIView {
                 arrowView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor),
                 arrowView.trailingAnchor.constraint(equalTo: trailingAnchor)
             ])
-        } else { // .right
+        } else { // right
             NSLayoutConstraint.activate([
                 arrowView.leadingAnchor.constraint(equalTo: leadingAnchor),
                 contentView.leadingAnchor.constraint(equalTo: arrowView.trailingAnchor),
@@ -222,69 +242,57 @@ public class TooltipView: UIView {
         }
     }
     
+    // MARK: - Drawing Arrow
+
     private func drawArrow() {
+        guard let appearance = manager else { return }
+        let arrowW = appearance.arrowSize.width
+        let arrowH = appearance.arrowSize.height
+        
         let path = UIBezierPath()
-        let arrowPoints = getArrowPoints(for: side)
-        path.move(to: arrowPoints[0])
-        path.addLine(to: arrowPoints[1])
-        path.addLine(to: arrowPoints[2])
-        path.close()
         
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.fillColor = contentView.backgroundColor?.cgColor
-        
-        arrowView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
-        arrowView.layer.addSublayer(shapeLayer)
-    }
-    
-    private func getArrowPoints(for side: TooltipSide) -> [CGPoint] {
         switch side {
         case .top:
-            return [
-                CGPoint(x: 0, y: 0),
-                CGPoint(x: arrowSize.width / 2, y: arrowSize.height),
-                CGPoint(x: arrowSize.width, y: 0)
-            ]
+            path.move(to: .zero)
+            path.addLine(to: CGPoint(x: arrowW / 2, y: arrowH))
+            path.addLine(to: CGPoint(x: arrowW, y: 0))
         case .bottom:
-            return [
-                CGPoint(x: 0, y: arrowSize.height),
-                CGPoint(x: arrowSize.width / 2, y: 0),
-                CGPoint(x: arrowSize.width, y: arrowSize.height)
-            ]
+            path.move(to: CGPoint(x: 0, y: arrowH))
+            path.addLine(to: CGPoint(x: arrowW / 2, y: 0))
+            path.addLine(to: CGPoint(x: arrowW, y: arrowH))
         case .left:
-            return [
-                CGPoint(x: 0, y: 0),
-                CGPoint(x: arrowSize.height, y: arrowSize.width / 2),
-                CGPoint(x: 0, y: arrowSize.width)
-            ]
+            path.move(to: .zero)
+            path.addLine(to: CGPoint(x: arrowH, y: arrowW / 2))
+            path.addLine(to: CGPoint(x: 0, y: arrowW))
         case .right:
-            return [
-                CGPoint(x: arrowSize.height, y: 0),
-                CGPoint(x: 0, y: arrowSize.width / 2),
-                CGPoint(x: arrowSize.height, y: arrowSize.width)
-            ]
+            path.move(to: CGPoint(x: arrowH, y: 0))
+            path.addLine(to: CGPoint(x: 0, y: arrowW / 2))
+            path.addLine(to: CGPoint(x: arrowH, y: arrowW))
         }
+        path.close()
+        
+        let shape = CAShapeLayer()
+        shape.path = path.cgPath
+        shape.fillColor = appearance.backgroundColor.cgColor
+        
+        arrowView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        arrowView.layer.addSublayer(shape)
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        buttonStackView.axis = .horizontal
-        contentView.layer.cornerRadius = contentView.frame.height * 0.10
-        contentView.layer.masksToBounds = true
-        layoutIfNeeded()
-    }
-    
+    // MARK: - Adjust Arrow Position (unchanged)
+
     private func adjustArrowPosition() {
-        let tooltipFrame = self.frame
+        guard let appearance = manager else { return }
+        let tooltipFrame = frame
+        
         switch side {
         case .top, .bottom:
             let targetMidX = targetFrame.midX
             let tooltipMinX = tooltipFrame.minX
             var arrowCenterX = targetMidX - tooltipMinX
-            let arrowHalfWidth = arrowSize.width / 2
-            let minX = arrowHalfWidth + 8
-            let maxX = tooltipFrame.width - arrowHalfWidth - 8
+            let halfWidth = appearance.arrowSize.width / 2
+            let minX = halfWidth + 8
+            let maxX = tooltipFrame.width - halfWidth - 8
             arrowCenterX = max(minX, min(arrowCenterX, maxX))
             arrowCenterXConstraint?.constant = arrowCenterX - tooltipFrame.width / 2
             
@@ -292,9 +300,9 @@ public class TooltipView: UIView {
             let targetMidY = targetFrame.midY
             let tooltipMinY = tooltipFrame.minY
             var arrowCenterY = targetMidY - tooltipMinY
-            let arrowHalfHeight = arrowSize.width / 2
-            let minY = arrowHalfHeight + 8
-            let maxY = tooltipFrame.height - arrowHalfHeight - 8
+            let halfHeight = appearance.arrowSize.width / 2
+            let minY = halfHeight + 8
+            let maxY = tooltipFrame.height - halfHeight - 8
             arrowCenterY = max(minY, min(arrowCenterY, maxY))
             arrowCenterYConstraint?.constant = arrowCenterY - tooltipFrame.height / 2
         }
@@ -302,15 +310,20 @@ public class TooltipView: UIView {
         layoutIfNeeded()
     }
     
-    func present(in parentView: UIView) {
+    // MARK: - Public
+    
+    public func present(in parentView: UIView) {
+        // EXACT original logic from your snippet
         parentView.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
         
+        // Create a reference view placed exactly where targetFrame is
         let referenceView = UIView()
         referenceView.translatesAutoresizingMaskIntoConstraints = false
         parentView.addSubview(referenceView)
         self.referenceView = referenceView
         
+        // Position the referenceView at targetFrame
         NSLayoutConstraint.activate([
             referenceView.leftAnchor.constraint(equalTo: parentView.leftAnchor, constant: targetFrame.origin.x),
             referenceView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: targetFrame.origin.y),
@@ -355,24 +368,21 @@ public class TooltipView: UIView {
         
         parentView.layoutIfNeeded()
         
-        // Adjust arrow position after layout
+        // Adjust arrow position once final frame is known
         adjustArrowPosition()
         
-        // Animate in
+        // Animate the tooltip in
         animateIn()
     }
     
-    public override func removeFromSuperview() {
-        super.removeFromSuperview()
-        referenceView?.removeFromSuperview()
-        referenceView = nil
-    }
-    
-    func updateButtons(isFirst: Bool, isLast: Bool) {
+    public func updateButtons(isFirst: Bool, isLast: Bool) {
         self.isFirst = isFirst
         self.isLast = isLast
         
-        switch buttonConfig {
+        guard let appearance = manager else { return }
+        let config = appearance.buttonConfiguration
+        
+        switch config {
         case .none:
             previousButton.isHidden = true
             nextButton.isHidden = true
@@ -383,21 +393,29 @@ public class TooltipView: UIView {
             previousButton.isHidden = isFirst
             nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
         }
+        
         updateButtonStack()
     }
     
+    // MARK: - Private
+    
     private func updateButtonStack() {
-        previousButton.isHidden = (buttonConfig != .nextAndPrevious) || isFirst
+        guard let appearance = manager else { return }
+        let config = appearance.buttonConfiguration
+        
+        previousButton.isHidden = (config != .nextAndPrevious) || isFirst
         nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
         
         buttonStackLeadingConstraint?.isActive = false
         buttonStackCenterXConstraint?.isActive = false
         
         if previousButton.isHidden {
+            // Only next button visible
             buttonStackLeadingConstraint?.isActive = true
             buttonStackView.alignment = .leading
             buttonStackView.distribution = .fill
         } else {
+            // Both next & previous
             buttonStackCenterXConstraint?.isActive = true
             buttonStackView.alignment = .fill
             buttonStackView.distribution = .fillEqually
@@ -412,11 +430,9 @@ public class TooltipView: UIView {
         }
     }
     
-    // MARK: - Animations
-    
-    func animateIn() {
-        self.alpha = 0
-        self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+    private func animateIn() {
+        alpha = 0
+        transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         
         UIView.animate(
             withDuration: 0.5,
@@ -430,5 +446,19 @@ public class TooltipView: UIView {
             },
             completion: nil
         )
+    }
+    
+    public override func removeFromSuperview() {
+        super.removeFromSuperview()
+        referenceView?.removeFromSuperview()
+        referenceView = nil
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Update corner radius if changed dynamically
+        guard let appearance = manager else { return }
+        contentView.layer.cornerRadius = appearance.tooltipCornerRadius
     }
 }
