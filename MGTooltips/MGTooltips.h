@@ -2,7 +2,7 @@
 //  MGTooltips.h
 //  MGTooltips
 //
-//  Created by Miswag on 06/01/2025.
+//  Created by Moses Kh. on 06/01/2025.
 //
 
 #import <Foundation/Foundation.h>
