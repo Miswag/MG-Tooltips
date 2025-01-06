@@ -8,7 +8,7 @@
 import UIKit
 
 /// Defines the contract for how a tooltip should appear (fonts, colors, corner radii, etc.).
-public protocol MGTooltipAppearance {
+ protocol MGTooltipAppearance {
     var font: UIFont { get }
     var textColor: UIColor { get }
     var backgroundColor: UIColor { get }

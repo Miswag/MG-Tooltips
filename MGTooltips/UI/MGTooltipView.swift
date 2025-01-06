@@ -8,7 +8,7 @@
 import UIKit
 
 /// The actual tooltip bubble with arrow, message label, optional buttons, etc.
-public class MGTooltipView: UIView {
+ class MGTooltipView: UIView {
     
     // MARK: - UI Elements
     
