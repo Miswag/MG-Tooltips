@@ -98,13 +98,13 @@ public class TooltipView: UIView {
             $0.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         }
         
-        previousButton.setTitle("tooltip.previous", for: .normal)
+        previousButton.setTitle("previous", for: .normal)
         previousButton.setTitleColor(.label, for: .normal)
         previousButton.layer.borderColor = UIColor.black.cgColor
         previousButton.layer.borderWidth = 1
         previousButton.backgroundColor = .clear
         
-        nextButton.setTitle("tooltip.next", for: .normal)
+        nextButton.setTitle("next", for: .normal)
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.backgroundColor = .black
     }
@@ -378,17 +378,17 @@ public class TooltipView: UIView {
             nextButton.isHidden = true
         case .nextOnly:
             previousButton.isHidden = true
-            nextButton.setTitle(isLast ? "tooltip.complete" : "tooltip.next", for: .normal)
+            nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
         case .nextAndPrevious:
             previousButton.isHidden = isFirst
-            nextButton.setTitle(isLast ? "tooltip.complete" : "tooltip.next", for: .normal)
+            nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
         }
         updateButtonStack()
     }
     
     private func updateButtonStack() {
         previousButton.isHidden = (buttonConfig != .nextAndPrevious) || isFirst
-        nextButton.setTitle(isLast ? "tooltip.complete" : "tooltip.next", for: .normal)
+        nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
         
         buttonStackLeadingConstraint?.isActive = false
         buttonStackCenterXConstraint?.isActive = false

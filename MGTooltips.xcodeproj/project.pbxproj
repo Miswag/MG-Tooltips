@@ -9,34 +9,61 @@
 /* Begin PBXBuildFile section */
 		42C9915E2D2BCBDD00155FE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915D2D2BCBDD00155FE1 /* README.md */; };
 		42C991602D2BCBE200155FE1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915F2D2BCBE200155FE1 /* LICENSE */; };
+		42C9919E2D2BEE3200155FE1 /* MGTooltips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */; };
+		42C9919F2D2BEE3200155FE1 /* MGTooltips.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42C991C22D2BEF6300155FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */; };
+		42C991C32D2BEF6300155FE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */; };
+		42C991C42D2BEF6300155FE1 /* MGTooltipsDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */; };
+		42C991C52D2BEF6300155FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BB2D2BEF6300155FE1 /* Assets.xcassets */; };
+		42C991C72D2BEF6300155FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */; };
+		42C991CE2D2BEF6500155FE1 /* MGTooltips.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C991C82D2BEF6500155FE1 /* MGTooltips.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42C991CF2D2BEF6500155FE1 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C92D2BEF6500155FE1 /* OverlayView.swift */; };
+		42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */; };
+		42C991D12D2BEF6500155FE1 /* TooltipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */; };
+		42C991D22D2BEF6500155FE1 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CC2D2BEF6500155FE1 /* TooltipView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42C991A02D2BEE3200155FE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42C991352D2BC47E00155FE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42C9913D2D2BC47E00155FE1;
+			remoteInfo = MGTooltips;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		42C991A22D2BEE3200155FE1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				42C9919F2D2BEE3200155FE1 /* MGTooltips.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGTooltips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C9915D2D2BCBDD00155FE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42C9915F2D2BCBE200155FE1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		42C991712D2BEDC200155FE1 /* TooltipsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooltipsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42C991BB2D2BEF6300155FE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42C991BC2D2BEF6300155FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42C991BD2D2BEF6300155FE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipsDemo.swift; sourceTree = "<group>"; };
+		42C991C82D2BEF6500155FE1 /* MGTooltips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTooltips.h; sourceTree = "<group>"; };
+		42C991C92D2BEF6500155FE1 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipComponents.swift; sourceTree = "<group>"; };
+		42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipManager.swift; sourceTree = "<group>"; };
+		42C991CC2D2BEF6500155FE1 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		42C991452D2BC47E00155FE1 /* Exceptions for "MGTooltips" folder in "MGTooltips" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			publicHeaders = (
-				MGTooltips.h,
-			);
-			target = 42C9913D2D2BC47E00155FE1 /* MGTooltips */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		42C991402D2BC47E00155FE1 /* MGTooltips */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				42C991452D2BC47E00155FE1 /* Exceptions for "MGTooltips" folder in "MGTooltips" target */,
-			);
-			path = MGTooltips;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		42C9913B2D2BC47E00155FE1 /* Frameworks */ = {
@@ -46,15 +73,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		42C9916E2D2BEDC200155FE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C9919E2D2BEE3200155FE1 /* MGTooltips.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		42C991342D2BC47E00155FE1 = {
 			isa = PBXGroup;
 			children = (
-				42C991402D2BC47E00155FE1 /* MGTooltips */,
+				42C991C12D2BEF6300155FE1 /* TooltipsDemo */,
+				42C991CD2D2BEF6500155FE1 /* MGTooltips */,
 				42C9915F2D2BCBE200155FE1 /* LICENSE */,
 				42C9915D2D2BCBDD00155FE1 /* README.md */,
+				42C9919D2D2BEE3200155FE1 /* Frameworks */,
 				42C9913F2D2BC47E00155FE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,8 +100,49 @@
 			isa = PBXGroup;
 			children = (
 				42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */,
+				42C991712D2BEDC200155FE1 /* TooltipsDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		42C9919D2D2BEE3200155FE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42C991C12D2BEF6300155FE1 /* TooltipsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */,
+				42C991D32D2BF05C00155FE1 /* Resources */,
+			);
+			path = TooltipsDemo;
+			sourceTree = "<group>";
+		};
+		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
+				42C991C92D2BEF6500155FE1 /* OverlayView.swift */,
+				42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */,
+				42C991CB2D2BEF6500155FE1 /* TooltipManager.swift */,
+				42C991CC2D2BEF6500155FE1 /* TooltipView.swift */,
+			);
+			path = MGTooltips;
+			sourceTree = "<group>";
+		};
+		42C991D32D2BF05C00155FE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42C991BB2D2BEF6300155FE1 /* Assets.xcassets */,
+				42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */,
+				42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */,
+				42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */,
+				42C991BC2D2BEF6300155FE1 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +152,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C991CE2D2BEF6500155FE1 /* MGTooltips.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,15 +172,33 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				42C991402D2BC47E00155FE1 /* MGTooltips */,
-			);
 			name = MGTooltips;
 			packageProductDependencies = (
 			);
 			productName = MGTooltips;
 			productReference = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		42C991702D2BEDC200155FE1 /* TooltipsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42C991832D2BEDC300155FE1 /* Build configuration list for PBXNativeTarget "TooltipsDemo" */;
+			buildPhases = (
+				42C9916D2D2BEDC200155FE1 /* Sources */,
+				42C9916E2D2BEDC200155FE1 /* Frameworks */,
+				42C9916F2D2BEDC200155FE1 /* Resources */,
+				42C991A22D2BEE3200155FE1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42C991A12D2BEE3200155FE1 /* PBXTargetDependency */,
+			);
+			name = TooltipsDemo;
+			packageProductDependencies = (
+			);
+			productName = TooltipsDemo;
+			productReference = 42C991712D2BEDC200155FE1 /* TooltipsDemo.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,11 +207,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					42C9913D2D2BC47E00155FE1 = {
 						CreatedOnToolsVersion = 16.2;
 						LastSwiftMigration = 1620;
+					};
+					42C991702D2BEDC200155FE1 = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -133,6 +234,7 @@
 			projectRoot = "";
 			targets = (
 				42C9913D2D2BC47E00155FE1 /* MGTooltips */,
+				42C991702D2BEDC200155FE1 /* TooltipsDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -147,6 +249,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		42C9916F2D2BEDC200155FE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C991C52D2BEF6300155FE1 /* Assets.xcassets in Resources */,
+				42C991C72D2BEF6300155FE1 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -154,10 +265,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C991CF2D2BEF6500155FE1 /* OverlayView.swift in Sources */,
+				42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */,
+				42C991D12D2BEF6500155FE1 /* TooltipManager.swift in Sources */,
+				42C991D22D2BEF6500155FE1 /* TooltipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42C9916D2D2BEDC200155FE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C991C22D2BEF6300155FE1 /* AppDelegate.swift in Sources */,
+				42C991C32D2BEF6300155FE1 /* SceneDelegate.swift in Sources */,
+				42C991C42D2BEF6300155FE1 /* MGTooltipsDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42C991A12D2BEE3200155FE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42C9913D2D2BC47E00155FE1 /* MGTooltips */;
+			targetProxy = 42C991A02D2BEE3200155FE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42C991BD2D2BEF6300155FE1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		42C991472D2BC47E00155FE1 /* Debug */ = {
@@ -176,6 +320,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -215,6 +360,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -297,6 +443,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -356,9 +503,76 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		42C991842D2BEDC300155FE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BS6QG6DWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooltipsDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TooltipsDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mgtooltips.TooltipsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42C991852D2BEDC300155FE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BS6QG6DWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooltipsDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TooltipsDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mgtooltips.TooltipsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -379,6 +593,15 @@
 			buildConfigurations = (
 				42C991472D2BC47E00155FE1 /* Debug */,
 				42C991482D2BC47E00155FE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42C991832D2BEDC300155FE1 /* Build configuration list for PBXNativeTarget "TooltipsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42C991842D2BEDC300155FE1 /* Debug */,
+				42C991852D2BEDC300155FE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
