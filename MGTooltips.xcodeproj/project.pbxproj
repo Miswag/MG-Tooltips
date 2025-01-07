@@ -100,6 +100,17 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		42ADC78B2D2D60DB005CF6B1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4294DED32D2D2320008B13D9 /* Helpers */,
+				42C991E22D2D1E2200155FE1 /* Resources */,
+				42C991E02D2C11D600155FE1 /* Core */,
+				42C991E12D2C11DE00155FE1 /* UI */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		42C991342D2BC47E00155FE1 = {
 			isa = PBXGroup;
 			children = (
@@ -140,10 +151,7 @@
 		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
 			isa = PBXGroup;
 			children = (
-				4294DED32D2D2320008B13D9 /* Helpers */,
-				42C991E22D2D1E2200155FE1 /* Resources */,
-				42C991E02D2C11D600155FE1 /* Core */,
-				42C991E12D2C11DE00155FE1 /* UI */,
+				42ADC78B2D2D60DB005CF6B1 /* Sources */,
 			);
 			path = MGTooltips;
 			sourceTree = "<group>";
