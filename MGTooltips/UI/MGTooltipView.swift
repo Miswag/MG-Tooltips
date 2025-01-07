@@ -8,7 +8,7 @@
 import UIKit
 
 /// The actual tooltip bubble with arrow, message label, optional buttons, etc.
- class MGTooltipView: UIView {
+class MGTooltipView: UIView {
     
     // MARK: - UI Elements
     
@@ -29,6 +29,9 @@ import UIKit
     private var arrowCenterYConstraint: NSLayoutConstraint?
     private var buttonStackCenterXConstraint: NSLayoutConstraint?
     private var buttonStackLeadingConstraint: NSLayoutConstraint?
+    
+    let widthMin: CGFloat = 160
+    let widthMax: CGFloat = 200
     
     // Tooltip data
     private let side: TooltipSide
@@ -111,12 +114,12 @@ import UIKit
         }
         
         // Previous
-        previousButton.setTitle("previous", for: .normal)
+        previousButton.setTitle("previous.button".localized(), for: .normal)
         previousButton.setTitleColor(appearance.buttonBorderColor, for: .normal)
         previousButton.backgroundColor = .clear
         
         // Next
-        nextButton.setTitle("next", for: .normal)
+        nextButton.setTitle("next.button".localized(), for: .normal)
         nextButton.setTitleColor(appearance.buttonTextColor, for: .normal)
         nextButton.backgroundColor = appearance.buttonBackgroundColor
     }
@@ -131,7 +134,7 @@ import UIKit
     }
     
     // MARK: - Layout (Unchanged)
-
+    
     private func layoutUI() {
         contentView.addSubview(messageLabel)
         
@@ -183,9 +186,6 @@ import UIKit
     private func setupVerticalLayout() {
         guard let appearance = manager else { return }
         
-        let widthMin: CGFloat = 160
-        let widthMax: CGFloat = 200
-        
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -214,9 +214,6 @@ import UIKit
     private func setupHorizontalLayout() {
         guard let appearance = manager else { return }
         
-        let widthMin: CGFloat = 160
-        let widthMax: CGFloat = 200
-        
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: topAnchor),
             contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -243,7 +240,7 @@ import UIKit
     }
     
     // MARK: - Drawing Arrow
-
+    
     private func drawArrow() {
         guard let appearance = manager else { return }
         let arrowW = appearance.arrowSize.width
@@ -280,7 +277,7 @@ import UIKit
     }
     
     // MARK: - Adjust Arrow Position (unchanged)
-
+    
     private func adjustArrowPosition() {
         guard let appearance = manager else { return }
         let tooltipFrame = frame
@@ -388,10 +385,10 @@ import UIKit
             nextButton.isHidden = true
         case .nextOnly:
             previousButton.isHidden = true
-            nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
+            nextButton.setTitle(isLast ? "complete.button".localized() : "next.button".localized(), for: .normal)
         case .nextAndPrevious:
             previousButton.isHidden = isFirst
-            nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
+            nextButton.setTitle(isLast ? "complete.button".localized() : "next.button".localized(), for: .normal)
         }
         
         updateButtonStack()
@@ -404,7 +401,7 @@ import UIKit
         let config = appearance.buttonConfiguration
         
         previousButton.isHidden = (config != .nextAndPrevious) || isFirst
-        nextButton.setTitle(isLast ? "complete" : "next", for: .normal)
+        nextButton.setTitle(isLast ? "complete.button".localized() : "next.button".localized(), for: .normal)
         
         buttonStackLeadingConstraint?.isActive = false
         buttonStackCenterXConstraint?.isActive = false

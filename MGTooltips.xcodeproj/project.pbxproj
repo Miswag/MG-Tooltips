@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4294DED52D2D2330008B13D9 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294DED42D2D232A008B13D9 /* Bundle.swift */; };
+		4294DED62D2D256D008B13D9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */; };
 		42C9915E2D2BCBDD00155FE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915D2D2BCBDD00155FE1 /* README.md */; };
 		42C991602D2BCBE200155FE1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915F2D2BCBE200155FE1 /* LICENSE */; };
 		42C9919E2D2BEE3200155FE1 /* MGTooltips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */; };
@@ -50,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4294DED42D2D232A008B13D9 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGTooltips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C9915D2D2BCBDD00155FE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42C9915F2D2BCBE200155FE1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4294DED32D2D2320008B13D9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4294DED42D2D232A008B13D9 /* Bundle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		42C991342D2BC47E00155FE1 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
 			isa = PBXGroup;
 			children = (
+				4294DED32D2D2320008B13D9 /* Helpers */,
 				42C991E22D2D1E2200155FE1 /* Resources */,
 				42C991E02D2C11D600155FE1 /* Core */,
 				42C991E12D2C11DE00155FE1 /* UI */,
@@ -171,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
+				4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -255,6 +269,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
+				fr,
+				de,
+				ja,
+				uk,
+				es,
 			);
 			mainGroup = 42C991342D2BC47E00155FE1;
 			minimizedProjectReferenceProxies = 1;
@@ -274,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4294DED62D2D256D008B13D9 /* Localizable.xcstrings in Resources */,
 				42C991602D2BCBE200155FE1 /* LICENSE in Resources */,
 				42C9915E2D2BCBDD00155FE1 /* README.md in Resources */,
 			);
@@ -296,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C991CF2D2BEF6500155FE1 /* MGOverlayView.swift in Sources */,
+				4294DED52D2D2330008B13D9 /* Bundle.swift in Sources */,
 				42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */,
 				42C991DF2D2C094100155FE1 /* MGTooltipDelegate.swift in Sources */,
 				42C991DD2D2C092600155FE1 /* MGTooltipAppearance.swift in Sources */,

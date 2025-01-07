@@ -65,7 +65,7 @@ class MGTooltipsDemo: UIViewController {
     
     @objc private func showTooltips() {
         tooltipManager = MGTooltip()
-        tooltipManager?.buttonConfiguration = .none
+        tooltipManager?.buttonConfiguration = .nextOnly
         tooltipManager?.canTapScreenToDismiss = true
         tooltipManager?.delegate = self
         

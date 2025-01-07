@@ -14,28 +14,27 @@ public class MGTooltip: MGTooltipAppearance {
     // (All styling properties stored here directly)
 
     public var font: UIFont = .systemFont(ofSize: 14)
-    public var textColor: UIColor = .label
+    public var textColor: UIColor = .black
     public var backgroundColor: UIColor = .white
     public var tooltipCornerRadius: CGFloat = 8
     public var arrowSize: CGSize = CGSize(width: 16, height: 8)
-    
+
     public var buttonFont: UIFont = .systemFont(ofSize: 12)
     public var buttonCornerRadius: CGFloat = 12.5
     public var buttonTextColor: UIColor = .white
     public var buttonBackgroundColor: UIColor = .black
-    public var buttonBorderColor: UIColor = .black
+    public var buttonBorderColor: UIColor = UIColor.separator
     public var buttonBorderWidth: CGFloat = 1
     
     // MARK: - Behavior & Configuration
 
     public var canTapScreenToDismiss: Bool = false
-    public var overlayColor: UIColor = .black
+    public var overlayColor: UIColor = .label
     public var overlayOpacity: CGFloat = 0.5
     public var buttonConfiguration: TooltipButtonConfiguration = .nextAndPrevious
     
     // MARK: - Delegate
     
-    /// Use this to get notified about lifecycle events like start, show, dismiss, complete.
     public weak var delegate: MGTooltipDelegate?
     
     // MARK: - Sequence Management
@@ -155,7 +154,7 @@ public class MGTooltip: MGTooltipAppearance {
         self.snapshotView = snapshot
         
         // 5. Create the overlay
-        let overlay = createOverlay(in: keyWindow, cutoutRect: targetFrame.insetBy(dx: -2, dy: -2))
+        let overlay = createOverlay(in: keyWindow, cutoutRect: targetFrame.insetBy(dx: -4, dy: -4))
         keyWindow.addSubview(overlay)
         overlay.alpha = 0
         self.overlayView = overlay
@@ -285,7 +284,7 @@ public class MGTooltip: MGTooltipAppearance {
             cutoutRect: cutoutRect,
             overlayColor: overlayColor,
             overlayOpacity: overlayOpacity,
-            cornerRadius: 8
+            cornerRadius: 5
         )
         return overlay
     }
