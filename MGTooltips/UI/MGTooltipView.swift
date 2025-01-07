@@ -10,6 +10,28 @@ import UIKit
 /// The actual tooltip bubble containing the message, arrow, and optional buttons.
 class MGTooltipView: UIView {
     
+    // MARK: - Constants
+    
+    /// The minimum width for the tooltip bubble.
+    /// - Note: Ensures that the tooltip does not shrink below this width for better readability.
+    let widthMin: CGFloat = 160
+
+    /// The maximum width for the tooltip bubble.
+    /// - Note: Ensures that the tooltip does not exceed this width to maintain a consistent design and avoid overlapping other UI elements.
+    let widthMax: CGFloat = 200
+    
+    /// The localized title for the "Next" button in the tooltip.
+    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
+    let nextButtonTitle: String = NSLocalizedString("next.button", bundle: .frameworkBundle, comment: "Title for the 'Next' button in tooltips.")
+
+    /// The localized title for the "Previous" button in the tooltip.
+    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
+    let previousButtonTitle: String = NSLocalizedString("previous.button", bundle: .frameworkBundle, comment: "Title for the 'Previous' button in tooltips.")
+
+    /// The localized title for the "Complete" button in the tooltip, displayed when on the last tooltip in the sequence.
+    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
+    let completeButtonTitle: String = NSLocalizedString("complete.button", bundle: .frameworkBundle, comment: "Title for the 'Complete' button in tooltips, used for the final step.")
+
     // MARK: - UI Elements
     
     private let messageLabel = UILabel()
@@ -24,6 +46,7 @@ class MGTooltipView: UIView {
     
     /// Callback invoked when the 'previous' button is pressed.
     var onPrevious: (() -> Void)?
+    
     /// Callback invoked when the 'next' or 'complete' button is pressed.
     var onNext: (() -> Void)?
     
@@ -34,10 +57,6 @@ class MGTooltipView: UIView {
     private var buttonStackCenterXConstraint: NSLayoutConstraint?
     private var buttonStackLeadingConstraint: NSLayoutConstraint?
     
-    // The minimum and maximum content width for the tooltip.
-    let widthMin: CGFloat = 160
-    let widthMax: CGFloat = 200
-    
     // MARK: - Tooltip Data
     
     private let side: TooltipSide
@@ -45,10 +64,12 @@ class MGTooltipView: UIView {
     private var referenceView: UIView?
     
     // MARK: - Appearance/Manager
+    
     /// The manager also conforms to `MGTooltipAppearance` to provide styling properties.
     private weak var manager: (MGTooltipAppearance & AnyObject)?
     
     // MARK: - State
+    
     private var isFirst = true
     private var isLast = false
     
@@ -70,8 +91,7 @@ class MGTooltipView: UIView {
         super.init(frame: .zero)
         
         messageLabel.text = tooltipItem.message
-        
-        setupView()
+        setupView() // sets up subviews and constraints
     }
     
     required init?(coder: NSCoder) {
@@ -117,24 +137,39 @@ class MGTooltipView: UIView {
         
         // Apply common button styling
         [previousButton, nextButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.titleLabel?.font = appearance.buttonFont
-            $0.layer.cornerRadius = appearance.buttonCornerRadius
-            $0.layer.masksToBounds = true
-            $0.layer.borderColor = appearance.buttonBorderColor.cgColor
-            $0.layer.borderWidth = appearance.buttonBorderWidth
-            $0.widthAnchor.constraint(equalToConstant: 70).isActive = true
-            $0.heightAnchor.constraint(equalToConstant: 25).isActive = true
-            $0.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            configureCommonButtonStyles($0, appearance: appearance)
         }
         
         // Configure the 'previous' button
-        previousButton.setTitle("previous.button".localized(), for: .normal)
-        previousButton.setTitleColor(appearance.buttonBorderColor, for: .normal)
-        previousButton.backgroundColor = .clear
+        configurePreviousButton(appearance)
         
         // Configure the 'next' button
-        nextButton.setTitle("next.button".localized(), for: .normal)
+        configureNextButton(appearance)
+    }
+    
+    /// Applies shared styles to all tooltip buttons (previous/next).
+    private func configureCommonButtonStyles(_ button: UIButton, appearance: MGTooltipAppearance) {
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = appearance.buttonFont
+        button.layer.cornerRadius = appearance.buttonCornerRadius
+        button.layer.masksToBounds = true
+        button.layer.borderColor = appearance.buttonBorderColor.cgColor
+        button.layer.borderWidth = appearance.buttonBorderWidth
+        button.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+    }
+    
+    /// Configures the 'previous' button style and title.
+    private func configurePreviousButton(_ appearance: MGTooltipAppearance) {
+        previousButton.setTitle(previousButtonTitle, for: .normal)
+        previousButton.setTitleColor(appearance.buttonBorderColor, for: .normal)
+        previousButton.backgroundColor = .clear
+    }
+    
+    /// Configures the 'next' button style and title.
+    private func configureNextButton(_ appearance: MGTooltipAppearance) {
+        nextButton.setTitle(nextButtonTitle, for: .normal)
         nextButton.setTitleColor(appearance.buttonTextColor, for: .normal)
         nextButton.backgroundColor = appearance.buttonBackgroundColor
     }
@@ -381,13 +416,13 @@ class MGTooltipView: UIView {
             constraints.append(centerX)
             
         case .left:
-            constraints.append(trailingAnchor.constraint(equalTo: refView.leftAnchor, constant: -padding))
+            constraints.append(rightAnchor.constraint(equalTo: refView.leftAnchor, constant: -padding))
             let centerY = centerYAnchor.constraint(equalTo: refView.centerYAnchor)
             centerY.priority = .defaultHigh
             constraints.append(centerY)
             
         case .right:
-            constraints.append(leadingAnchor.constraint(equalTo: refView.rightAnchor, constant: padding))
+            constraints.append(leftAnchor.constraint(equalTo: refView.rightAnchor, constant: padding))
             let centerY = centerYAnchor.constraint(equalTo: refView.centerYAnchor)
             centerY.priority = .defaultHigh
             constraints.append(centerY)
@@ -429,17 +464,11 @@ class MGTooltipView: UIView {
             
         case .nextOnly:
             previousButton.isHidden = true
-            nextButton.setTitle(
-                isLast ? "complete.button".localized() : "next.button".localized(),
-                for: .normal
-            )
+            nextButton.setTitle(getNextButtonText(isLast: isLast), for: .normal)
             
         case .nextAndPrevious:
             previousButton.isHidden = isFirst
-            nextButton.setTitle(
-                isLast ? "complete.button".localized() : "next.button".localized(),
-                for: .normal
-            )
+            nextButton.setTitle(getNextButtonText(isLast: isLast), for: .normal)
         }
         
         updateButtonStack()
@@ -447,25 +476,29 @@ class MGTooltipView: UIView {
     
     // MARK: - Private
     
+    /// Returns the appropriate text for the next button, whether "Complete" or "Next".
+    private func getNextButtonText(isLast: Bool) -> String {
+        return isLast ? completeButtonTitle : nextButtonTitle
+    }
+    
     /// Applies final layout rules for the button stack (leading or center alignment).
     private func updateButtonStack() {
         guard let appearance = manager else { return }
         let config = appearance.buttonConfiguration
         
-        // If we're on the last or first tooltip, we hide or show buttons accordingly.
         previousButton.isHidden = (config != .nextAndPrevious) || isFirst
-        nextButton.setTitle(isLast ? "complete.button".localized() : "next.button".localized(), for: .normal)
+        nextButton.setTitle(getNextButtonText(isLast: isLast), for: .normal)
         
+        // Deactivate both constraints before choosing one.
         buttonStackLeadingConstraint?.isActive = false
         buttonStackCenterXConstraint?.isActive = false
         
+        // If previous is hidden, align next button to the leading edge; otherwise center them.
         if previousButton.isHidden {
-            // Only the next button is visible; align left
             buttonStackLeadingConstraint?.isActive = true
             buttonStackView.alignment = .leading
             buttonStackView.distribution = .fill
         } else {
-            // Both previous & next are visible; center them
             buttonStackCenterXConstraint?.isActive = true
             buttonStackView.alignment = .fill
             buttonStackView.distribution = .fillEqually

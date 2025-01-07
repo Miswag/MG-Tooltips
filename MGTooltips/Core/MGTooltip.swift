@@ -22,7 +22,7 @@ public class MGTooltip: MGTooltipAppearance {
     public var buttonCornerRadius: CGFloat = 12.5
     public var buttonTextColor: UIColor = .white
     public var buttonBackgroundColor: UIColor = .black
-    public var buttonBorderColor: UIColor = UIColor.separator
+    public var buttonBorderColor: UIColor = UIColor.black
     public var buttonBorderWidth: CGFloat = 1
     
     public var canTapScreenToDismiss: Bool = false
