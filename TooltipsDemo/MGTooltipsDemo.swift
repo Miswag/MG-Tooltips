@@ -10,29 +10,13 @@ import MGTooltips
 
 import UIKit
 
-class MGTooltipsDemo: UIViewController, MGTooltipDelegate {
-    func tooltipsDidStarted() {
-        print("tooltips started")
-    }
-    
-    func tooltipDidShowed(at index: Int, item: MGTooltips.TooltipItem) {
-        print("tooltip \(index) is showed")
-    }
-    
-    func tooltipDidDismissed(at index: Int, item: MGTooltips.TooltipItem) {
-        print("tooltip \(index) is dismissed")
-    }
-    
-    func tooltipsDidCompleted() {
-        print("All tooltips completed!")
-    }
+class MGTooltipsDemo: UIViewController {
     
     private let label = UILabel()
     private let boxView = UIView()
     private let button = UIButton(type: .system)
     private var navBarButton: UIBarButtonItem!
     
-    // Our new manager:
     private var tooltipManager: MGTooltip?
     
     override func viewDidLoad() {
@@ -80,7 +64,6 @@ class MGTooltipsDemo: UIViewController, MGTooltipDelegate {
     }
     
     @objc private func showTooltips() {
-        // 1) Create manager with optional key
         tooltipManager = MGTooltip()
         tooltipManager?.buttonConfiguration = .none
         tooltipManager?.canTapScreenToDismiss = true
@@ -110,5 +93,23 @@ class MGTooltipsDemo: UIViewController, MGTooltipDelegate {
         tooltipManager?.appendTooltips([labelTooltip, boxTooltip, buttonTooltip, navTooltip])
         
         tooltipManager?.start()
+    }
+}
+
+extension MGTooltipsDemo: MGTooltipDelegate {
+    func tooltipsDidStarted() {
+        print("tooltips started")
+    }
+    
+    func tooltipDidShowed(at index: Int, item: MGTooltips.TooltipItem) {
+        print("tooltip \(index) is showed")
+    }
+    
+    func tooltipDidDismissed(at index: Int, item: MGTooltips.TooltipItem) {
+        print("tooltip \(index) is dismissed")
+    }
+    
+    func tooltipsDidCompleted() {
+        print("All tooltips completed!")
     }
 }

@@ -128,9 +128,9 @@
 		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
 			isa = PBXGroup;
 			children = (
+				42C991E22D2D1E2200155FE1 /* Resources */,
 				42C991E02D2C11D600155FE1 /* Core */,
 				42C991E12D2C11DE00155FE1 /* UI */,
-				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
 			);
 			path = MGTooltips;
 			sourceTree = "<group>";
@@ -165,6 +165,14 @@
 				42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		42C991E22D2D1E2200155FE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

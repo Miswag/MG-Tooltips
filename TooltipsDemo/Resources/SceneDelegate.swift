@@ -15,13 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        // Create your main view controller
         let mainViewController = MGTooltipsDemo()
-        
-        // Embed the main view controller inside a UINavigationController
         let navigationController = UINavigationController(rootViewController: mainViewController)
-        
-        // Create the window and set the rootViewController to the navigation controller
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
