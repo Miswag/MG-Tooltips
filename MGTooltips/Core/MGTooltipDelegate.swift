@@ -13,9 +13,15 @@ public protocol MGTooltipDelegate: AnyObject {
     func tooltipsDidStarted()
     
     /// Called right after the tooltip at `index` is shown.
+    /// - Parameters:
+    ///   - index: The index of the current tooltip in the sequence.
+    ///   - item: The `TooltipItem` that was shown.
     func tooltipDidShowed(at index: Int, item: TooltipItem)
     
     /// Called right after the tooltip at `index` is dismissed.
+    /// - Parameters:
+    ///   - index: The index of the current tooltip in the sequence.
+    ///   - item: The `TooltipItem` that was dismissed.
     func tooltipDidDismissed(at index: Int, item: TooltipItem)
     
     /// Called once all tooltips in the sequence have finished or were skipped.
