@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   DESC
   spec.homepage     = 'https://github.com/Miswag/MG-Tooltips.git'
   spec.license      = { :type => 'MIT', :file => 'LICENSE' }
-  spec.author       = { 'Miswag' => 'Mosa.khalun@miswag.com' }
+  spec.author       = { 'Miswag' => 'mosa.khaldun@miswag.com' }
   spec.source       = { :git => 'https://github.com/Miswag/MG-Tooltips.git', :tag => '1.0.0' }
   spec.ios.deployment_target = '13.0'
   spec.swift_version = '5.0'
