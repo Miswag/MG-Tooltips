@@ -34,7 +34,7 @@
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.0.0")
+    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.0.3")
 ]
 ```
 
@@ -43,13 +43,24 @@ dependencies: [
 1. Add the following to your Podfile:
 
 ```ruby
-pod 'MGTooltips', '~> 1.0.1'
+pod 'MGTooltips', '~> 1.0.3'
 ```
 
 2. Then, run the following command::
 ```ruby
 pod install
 ```
+
+### Manual Installation (Including Demo)
+1. Clone the repository::
+```ruby
+  git clone https://github.com/miswag/mgtooltips.git
+```
+2. Drag and drop the MGTooltips folder from the cloned repository into your Xcode project.
+3. Ensure the MGTooltips module is included in your target's Build Phases under Compile Sources.
+4. To explore the demo:
+   - Open the MGTooltips.xcodeproj file from the cloned repository.
+   - Build and run the demo to see the full capabilities of the tooltip system.
 
 ## 🚀 Quick Start
 
