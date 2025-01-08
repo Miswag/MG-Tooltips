@@ -30,7 +30,7 @@
 3. Enter this repo’s URL in the search field.
 4. Select the package and confirm to add it to your project.
 
-### Or just add the following to your `Package.swift` file:
+**Or just add the following line to your `Package.swift` file:**
 
 ```swift
 dependencies: [
@@ -140,7 +140,7 @@ To show tooltips only once:
 
 ```swift
 // Initialize with a unique key
-let tooltipManager = MGTooltip(key: "firstLaunchTutorial")
+let launchTooltips = MGTooltip(key: "firstLaunchTutorial")
 ```
 
 ## 📋 Requirements
@@ -159,9 +159,9 @@ MGTooltips is available under the MIT license. See the LICENSE file for more inf
 
 ## 👨‍💻 Author
 
-Mosa Khaldun  
-- 🔗 LinkedIn: [@Mosa Khaldun](https://linkedin.com/in/mosakh)  
-- ✉️ Email: mosa.khaldun98@gmail.com
+**Mosa Khaldun**
+- 🔗 **LinkedIn**: [@Mosa Khaldun](https://linkedin.com/in/mosakh)  
+- ✉️ **Email**: mosa.khaldun98@gmail.com
 
 ## Support
 
