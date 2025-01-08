@@ -145,11 +145,11 @@ class FirstTabViewController: UIViewController {
         leftContainer.frame = CGRect(x: 24, y: view.bounds.height - leftViewHeight - view.safeAreaInsets.bottom - 24, width: leftViewWidth, height: leftViewHeight)
         
         // Right View Label
-        rightLabel.frame = rightContainer.bounds
+        rightLabel.frame = CGRect(x: (rightContainer.bounds.width - rightLabel.intrinsicContentSize.width) / 2, y: (rightContainer.bounds.height - rightLabel.intrinsicContentSize.height) / 2, width: rightLabel.intrinsicContentSize.width, height: rightLabel.intrinsicContentSize.height)
+        
         // Left View Label
-        leftLabel.frame = leftContainer.bounds
+        leftLabel.frame = CGRect(x: (leftContainer.bounds.width - leftLabel.intrinsicContentSize.width) / 2, y: (leftContainer.bounds.height - leftLabel.intrinsicContentSize.height) / 2, width: leftLabel.intrinsicContentSize.width, height: leftLabel.intrinsicContentSize.height)
     }
-
     
     private func setupNavigationBar() {
         leftNavButton = UIBarButtonItem(
