@@ -2,12 +2,16 @@
 
 [![Swift Version](https://img.shields.io/badge/swift-5.0-orange)](https://swift.org)
 [![Platform](https://img.shields.io/badge/platform-iOS-orange)](https://developer.apple.com/ios/)
-[![UIKit](https://img.shields.io/badge/UIKit-compatible-orange)](https://developer.apple.com/documentation/uikit)
 [![CocoaPods](https://img.shields.io/cocoapods/v/MGTooltips)](https://cocoapods.org/pods/MGTooltips)
+[![UIKit](https://img.shields.io/badge/UIKit-compatible-orange)](https://developer.apple.com/documentation/uikit)
 [![SPM Compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
 **MGTooltips** is a lightweight, customizable tooltip system for iOS, designed to guide users through app workflows with ease. It supports flexible configurations, seamless animations, and a developer-friendly API.
+
+## 📱 Demo 
+
+https://github.com/user-attachments/assets/8d1cdcc6-e403-494f-b3f3-a0f11b98a3ed
 
 ## ✨ Features
 
@@ -43,7 +47,7 @@ dependencies: [
 1. Add the following to your Podfile:
 
 ```ruby
-pod 'MGTooltips', '~> 1.1'
+pod "MGTooltips", "1.1"
 ```
 
 2. Then, run the following command::
@@ -163,6 +167,8 @@ let launchTooltips = MGTooltip(key: "firstLaunchTutorial")
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+> [!TIP]
+> Fork the repository, and create a feature branch.
 
 ## 📄 License
 
@@ -171,7 +177,7 @@ MGTooltips is available under the MIT license. See the LICENSE file for more inf
 ## 👨‍💻 Author
 
 - 🔗 **LinkedIn**: [@Mosa Khaldun](https://linkedin.com/in/mosakh)  
-- ✉️ **Email**: mosa.khaldun98@gmail.com
+- ✉️ **Email**: mosa.khaldun@miswag.com
 
 ## Support
 
