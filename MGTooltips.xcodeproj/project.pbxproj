@@ -7,36 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4294DED52D2D2330008B13D9 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294DED42D2D232A008B13D9 /* Bundle.swift */; };
+		4294DED62D2D256D008B13D9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */; };
 		42C9915E2D2BCBDD00155FE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915D2D2BCBDD00155FE1 /* README.md */; };
 		42C991602D2BCBE200155FE1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 42C9915F2D2BCBE200155FE1 /* LICENSE */; };
+		42C9919E2D2BEE3200155FE1 /* MGTooltips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */; };
+		42C9919F2D2BEE3200155FE1 /* MGTooltips.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42C991C22D2BEF6300155FE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */; };
+		42C991C32D2BEF6300155FE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */; };
+		42C991C42D2BEF6300155FE1 /* MGTooltipsDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */; };
+		42C991C52D2BEF6300155FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BB2D2BEF6300155FE1 /* Assets.xcassets */; };
+		42C991C72D2BEF6300155FE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */; };
+		42C991CE2D2BEF6500155FE1 /* MGTooltips.h in Headers */ = {isa = PBXBuildFile; fileRef = 42C991C82D2BEF6500155FE1 /* MGTooltips.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42C991CF2D2BEF6500155FE1 /* MGOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */; };
+		42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */; };
+		42C991D12D2BEF6500155FE1 /* MGTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */; };
+		42C991D22D2BEF6500155FE1 /* MGTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */; };
+		42C991DD2D2C092600155FE1 /* MGTooltipAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */; };
+		42C991DF2D2C094100155FE1 /* MGTooltipDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		42C991A02D2BEE3200155FE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42C991352D2BC47E00155FE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42C9913D2D2BC47E00155FE1;
+			remoteInfo = MGTooltips;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		42C991A22D2BEE3200155FE1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				42C9919F2D2BEE3200155FE1 /* MGTooltips.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4294DED42D2D232A008B13D9 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGTooltips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42C9915D2D2BCBDD00155FE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42C9915F2D2BCBE200155FE1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		42C991712D2BEDC200155FE1 /* TooltipsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TooltipsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42C991BB2D2BEF6300155FE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42C991BC2D2BEF6300155FE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42C991BD2D2BEF6300155FE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipsDemo.swift; sourceTree = "<group>"; };
+		42C991C82D2BEF6500155FE1 /* MGTooltips.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGTooltips.h; sourceTree = "<group>"; };
+		42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGOverlayView.swift; sourceTree = "<group>"; };
+		42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipComponents.swift; sourceTree = "<group>"; };
+		42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltip.swift; sourceTree = "<group>"; };
+		42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipView.swift; sourceTree = "<group>"; };
+		42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipAppearance.swift; sourceTree = "<group>"; };
+		42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGTooltipDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		42C991452D2BC47E00155FE1 /* Exceptions for "MGTooltips" folder in "MGTooltips" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			publicHeaders = (
-				MGTooltips.h,
-			);
-			target = 42C9913D2D2BC47E00155FE1 /* MGTooltips */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		42C991402D2BC47E00155FE1 /* MGTooltips */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				42C991452D2BC47E00155FE1 /* Exceptions for "MGTooltips" folder in "MGTooltips" target */,
-			);
-			path = MGTooltips;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		42C9913B2D2BC47E00155FE1 /* Frameworks */ = {
@@ -46,15 +81,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		42C9916E2D2BEDC200155FE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C9919E2D2BEE3200155FE1 /* MGTooltips.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4294DED32D2D2320008B13D9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4294DED42D2D232A008B13D9 /* Bundle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		42ADC78B2D2D60DB005CF6B1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4294DED32D2D2320008B13D9 /* Helpers */,
+				42C991E22D2D1E2200155FE1 /* Resources */,
+				42C991E02D2C11D600155FE1 /* Core */,
+				42C991E12D2C11DE00155FE1 /* UI */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		42C991342D2BC47E00155FE1 = {
 			isa = PBXGroup;
 			children = (
-				42C991402D2BC47E00155FE1 /* MGTooltips */,
+				42C991C12D2BEF6300155FE1 /* TooltipsDemo */,
+				42C991CD2D2BEF6500155FE1 /* MGTooltips */,
 				42C9915F2D2BCBE200155FE1 /* LICENSE */,
 				42C9915D2D2BCBDD00155FE1 /* README.md */,
+				42C9919D2D2BEE3200155FE1 /* Frameworks */,
 				42C9913F2D2BC47E00155FE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,8 +127,74 @@
 			isa = PBXGroup;
 			children = (
 				42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */,
+				42C991712D2BEDC200155FE1 /* TooltipsDemo.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		42C9919D2D2BEE3200155FE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42C991C12D2BEF6300155FE1 /* TooltipsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C02D2BEF6300155FE1 /* MGTooltipsDemo.swift */,
+				42C991D32D2BF05C00155FE1 /* Resources */,
+			);
+			path = TooltipsDemo;
+			sourceTree = "<group>";
+		};
+		42C991CD2D2BEF6500155FE1 /* MGTooltips */ = {
+			isa = PBXGroup;
+			children = (
+				42ADC78B2D2D60DB005CF6B1 /* Sources */,
+			);
+			path = MGTooltips;
+			sourceTree = "<group>";
+		};
+		42C991D32D2BF05C00155FE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42C991BB2D2BEF6300155FE1 /* Assets.xcassets */,
+				42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */,
+				42C991BA2D2BEF6300155FE1 /* AppDelegate.swift */,
+				42C991BF2D2BEF6300155FE1 /* SceneDelegate.swift */,
+				42C991BC2D2BEF6300155FE1 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42C991E02D2C11D600155FE1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				42C991DE2D2C094000155FE1 /* MGTooltipDelegate.swift */,
+				42C991DC2D2C092200155FE1 /* MGTooltipAppearance.swift */,
+				42C991CA2D2BEF6500155FE1 /* TooltipComponents.swift */,
+				42C991CB2D2BEF6500155FE1 /* MGTooltip.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		42C991E12D2C11DE00155FE1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C92D2BEF6500155FE1 /* MGOverlayView.swift */,
+				42C991CC2D2BEF6500155FE1 /* MGTooltipView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		42C991E22D2D1E2200155FE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42C991C82D2BEF6500155FE1 /* MGTooltips.h */,
+				4294DED12D2D22BB008B13D9 /* Localizable.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +204,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C991CE2D2BEF6500155FE1 /* MGTooltips.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,15 +224,33 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				42C991402D2BC47E00155FE1 /* MGTooltips */,
-			);
 			name = MGTooltips;
 			packageProductDependencies = (
 			);
 			productName = MGTooltips;
 			productReference = 42C9913E2D2BC47E00155FE1 /* MGTooltips.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		42C991702D2BEDC200155FE1 /* TooltipsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42C991832D2BEDC300155FE1 /* Build configuration list for PBXNativeTarget "TooltipsDemo" */;
+			buildPhases = (
+				42C9916D2D2BEDC200155FE1 /* Sources */,
+				42C9916E2D2BEDC200155FE1 /* Frameworks */,
+				42C9916F2D2BEDC200155FE1 /* Resources */,
+				42C991A22D2BEE3200155FE1 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42C991A12D2BEE3200155FE1 /* PBXTargetDependency */,
+			);
+			name = TooltipsDemo;
+			packageProductDependencies = (
+			);
+			productName = TooltipsDemo;
+			productReference = 42C991712D2BEDC200155FE1 /* TooltipsDemo.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,9 +259,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					42C9913D2D2BC47E00155FE1 = {
+						CreatedOnToolsVersion = 16.2;
+						LastSwiftMigration = 1620;
+					};
+					42C991702D2BEDC200155FE1 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -123,6 +277,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
+				fr,
+				de,
+				ja,
+				uk,
+				es,
 			);
 			mainGroup = 42C991342D2BC47E00155FE1;
 			minimizedProjectReferenceProxies = 1;
@@ -132,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				42C9913D2D2BC47E00155FE1 /* MGTooltips */,
+				42C991702D2BEDC200155FE1 /* TooltipsDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -141,8 +302,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4294DED62D2D256D008B13D9 /* Localizable.xcstrings in Resources */,
 				42C991602D2BCBE200155FE1 /* LICENSE in Resources */,
 				42C9915E2D2BCBDD00155FE1 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42C9916F2D2BEDC200155FE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C991C52D2BEF6300155FE1 /* Assets.xcassets in Resources */,
+				42C991C72D2BEF6300155FE1 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,16 +324,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C991CF2D2BEF6500155FE1 /* MGOverlayView.swift in Sources */,
+				4294DED52D2D2330008B13D9 /* Bundle.swift in Sources */,
+				42C991D02D2BEF6500155FE1 /* TooltipComponents.swift in Sources */,
+				42C991DF2D2C094100155FE1 /* MGTooltipDelegate.swift in Sources */,
+				42C991DD2D2C092600155FE1 /* MGTooltipAppearance.swift in Sources */,
+				42C991D12D2BEF6500155FE1 /* MGTooltip.swift in Sources */,
+				42C991D22D2BEF6500155FE1 /* MGTooltipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42C9916D2D2BEDC200155FE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C991C22D2BEF6300155FE1 /* AppDelegate.swift in Sources */,
+				42C991C32D2BEF6300155FE1 /* SceneDelegate.swift in Sources */,
+				42C991C42D2BEF6300155FE1 /* MGTooltipsDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42C991A12D2BEE3200155FE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42C9913D2D2BC47E00155FE1 /* MGTooltips */;
+			targetProxy = 42C991A02D2BEE3200155FE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42C991BE2D2BEF6300155FE1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42C991BD2D2BEF6300155FE1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		42C991472D2BC47E00155FE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -174,6 +382,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -191,8 +400,9 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -200,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -211,6 +422,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -229,7 +441,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -293,6 +505,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -352,9 +565,76 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		42C991842D2BEDC300155FE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BS6QG6DWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooltipsDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TooltipsDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mgtooltips.TooltipsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		42C991852D2BEDC300155FE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BS6QG6DWV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TooltipsDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TooltipsDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mgtooltips.TooltipsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -375,6 +655,15 @@
 			buildConfigurations = (
 				42C991472D2BC47E00155FE1 /* Debug */,
 				42C991482D2BC47E00155FE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42C991832D2BEDC300155FE1 /* Build configuration list for PBXNativeTarget "TooltipsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42C991842D2BEDC300155FE1 /* Debug */,
+				42C991852D2BEDC300155FE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
