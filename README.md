@@ -159,7 +159,6 @@ MGTooltips is available under the MIT license. See the LICENSE file for more inf
 
 ## 👨‍💻 Author
 
-**Mosa Khaldun**
 - 🔗 **LinkedIn**: [@Mosa Khaldun](https://linkedin.com/in/mosakh)  
 - ✉️ **Email**: mosa.khaldun98@gmail.com
 
