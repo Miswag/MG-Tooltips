@@ -38,7 +38,7 @@ https://github.com/user-attachments/assets/8d1cdcc6-e403-494f-b3f3-a0f11b98a3ed
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.1")
+    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.1.1")
 ]
 ```
 
@@ -47,7 +47,7 @@ dependencies: [
 1. Add the following to your Podfile:
 
 ```ruby
-pod "MGTooltips", "1.1"
+pod "MGTooltips", "1.1.1"
 ```
 
 2. Then, run the following command::

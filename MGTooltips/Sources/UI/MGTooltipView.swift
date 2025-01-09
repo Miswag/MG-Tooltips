@@ -15,23 +15,11 @@ class MGTooltipView: UIView {
     /// The minimum width for the tooltip bubble.
     /// - Note: Ensures that the tooltip does not shrink below this width for better readability.
     let widthMin: CGFloat = 160
-
+    
     /// The maximum width for the tooltip bubble.
     /// - Note: Ensures that the tooltip does not exceed this width to maintain a consistent design and avoid overlapping other UI elements.
     let widthMax: CGFloat = 200
     
-    /// The localized title for the "Next" button in the tooltip.
-    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
-    let nextButtonTitle: String = NSLocalizedString("next.button", bundle: .frameworkBundle, comment: "Title for the 'Next' button in tooltips.")
-
-    /// The localized title for the "Previous" button in the tooltip.
-    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
-    let previousButtonTitle: String = NSLocalizedString("previous.button", bundle: .frameworkBundle, comment: "Title for the 'Previous' button in tooltips.")
-
-    /// The localized title for the "Complete" button in the tooltip, displayed when on the last tooltip in the sequence.
-    /// - Note: This string is fetched from the `Localizable.strings` file in the framework bundle.
-    let completeButtonTitle: String = NSLocalizedString("complete.button", bundle: .frameworkBundle, comment: "Title for the 'Complete' button in tooltips, used for the final step.")
-
     // MARK: - UI Elements
     
     private let messageLabel = UILabel()
@@ -162,14 +150,14 @@ class MGTooltipView: UIView {
     
     /// Configures the 'previous' button style and title.
     private func configurePreviousButton(_ appearance: MGTooltipAppearance) {
-        previousButton.setTitle(previousButtonTitle, for: .normal)
+        previousButton.setTitle(appearance.previousButtonTitle, for: .normal)
         previousButton.setTitleColor(appearance.buttonBorderColor, for: .normal)
         previousButton.backgroundColor = .clear
     }
     
     /// Configures the 'next' button style and title.
     private func configureNextButton(_ appearance: MGTooltipAppearance) {
-        nextButton.setTitle(nextButtonTitle, for: .normal)
+        nextButton.setTitle(appearance.nextButtonTitle, for: .normal)
         nextButton.setTitleColor(appearance.buttonTextColor, for: .normal)
         nextButton.backgroundColor = appearance.buttonBackgroundColor
     }
@@ -478,7 +466,8 @@ class MGTooltipView: UIView {
     
     /// Returns the appropriate text for the next button, whether "Complete" or "Next".
     private func getNextButtonText(isLast: Bool) -> String {
-        return isLast ? completeButtonTitle : nextButtonTitle
+        guard let appearance = manager else { return "String is not valid" }
+        return isLast ? appearance.completeButtonTitle : appearance.nextButtonTitle
     }
     
     /// Applies final layout rules for the button stack (leading or center alignment).

@@ -8,7 +8,7 @@
 import UIKit
 
 /// Main manager that orchestrates displaying a series of tooltips.
-public class MGTooltip: MGTooltipAppearance {
+open class MGTooltip: MGTooltipAppearance {
     
     // MARK: - Conformance to MGTooltipAppearance
     
@@ -29,6 +29,54 @@ public class MGTooltip: MGTooltipAppearance {
     public var overlayColor: UIColor = .label
     public var overlayOpacity: CGFloat = 0.5
     public var buttonConfiguration: TooltipButtonConfiguration = .nextAndPrevious
+    
+    // MARK: - Button Titles (Computed with Private Backing)
+    
+    /// NEXT
+    private var _nextButtonTitle: String?
+    public var nextButtonTitle: String {
+        get {
+            // If `_nextButtonTitle` is set, return it; otherwise fallback to Localizable.
+            _nextButtonTitle ?? NSLocalizedString(
+                "next.button",
+                bundle: .frameworkBundle,
+                comment: "Default title for 'Next' button."
+            )
+        }
+        set {
+            _nextButtonTitle = newValue
+        }
+    }
+    
+    /// PREVIOUS
+    private var _previousButtonTitle: String?
+    public var previousButtonTitle: String {
+        get {
+            _previousButtonTitle ?? NSLocalizedString(
+                "previous.button",
+                bundle: .frameworkBundle,
+                comment: "Default title for 'Previous' button."
+            )
+        }
+        set {
+            _previousButtonTitle = newValue
+        }
+    }
+    
+    /// COMPLETE
+    private var _completeButtonTitle: String?
+    public var completeButtonTitle: String {
+        get {
+            _completeButtonTitle ?? NSLocalizedString(
+                "complete.button",
+                bundle: .frameworkBundle,
+                comment: "Default title for 'Complete' button."
+            )
+        }
+        set {
+            _completeButtonTitle = newValue
+        }
+    }
     
     // MARK: - Delegate
     

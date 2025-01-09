@@ -53,4 +53,10 @@ protocol MGTooltipAppearance {
     
     /// The configuration of the tooltip buttons (none, nextOnly, or nextAndPrevious).
     var buttonConfiguration: TooltipButtonConfiguration { get }
+    
+    // Custom titles for buttons
+    var nextButtonTitle: String { get }
+    var previousButtonTitle: String { get }
+    var completeButtonTitle: String { get }
+    
 }

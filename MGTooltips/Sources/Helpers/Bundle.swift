@@ -11,12 +11,13 @@ import Foundation
 
 /// Extension to fetch resources (like `Localizable.strings`) from this framework’s bundle.
 extension Bundle {
-    /// Locates the `MGTooltips` framework bundle using its identifier.
+    /// Locates the `MGTooltips` framework bundle dynamically based on integration method.
     static var frameworkBundle: Bundle {
-        let bundleName = "mgtooltips.MGTooltips"
-        guard let bundle = Bundle(identifier: bundleName) else {
-            fatalError("Could not locate bundle for \(bundleName)")
-        }
-        return bundle
+        #if SWIFT_PACKAGE
+        return .module
+        #else
+        return Bundle(for: MGTooltip.self)
+        #endif
     }
 }
+
