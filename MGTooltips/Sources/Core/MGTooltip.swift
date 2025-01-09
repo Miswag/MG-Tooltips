@@ -209,7 +209,7 @@ open class MGTooltip: MGTooltipAppearance {
             self?.showPreviousTooltip()
         }
         tooltipView.onNext = { [weak self] in
-            self?.showNextTooltip()
+            self?.proceedToNextTooltip()
         }
         
         // 8. Update button states (first or last in the sequence).
@@ -232,23 +232,13 @@ open class MGTooltip: MGTooltipAppearance {
     
     @objc private func overlayTapped() {
         // Move to the next tooltip on screen tap.
-        showNextTooltip()
+        proceedToNextTooltip()
     }
     
     private func showPreviousTooltip() {
         clearTooltipViews()
         currentIndex = max(0, currentIndex - 1)
         showTooltip(at: currentIndex)
-    }
-    
-    private func showNextTooltip() {
-        clearTooltipViews()
-        currentIndex += 1
-        if currentIndex < tooltips.count {
-            showTooltip(at: currentIndex)
-        } else {
-            finishSequence()
-        }
     }
     
     private func proceedToNextTooltip() {
