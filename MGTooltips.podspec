@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'MGTooltips'
-  spec.version      = '1.1.1'
+  spec.version      = '1.2.0'
   spec.summary      = 'A dynamic and customizable tooltip system for iOS using UIKit.'
   spec.description  = <<-DESC
     MGTooltips is a dynamic and customizable tooltip system for iOS. 
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   'Mustafa Ahmed' => 'mustafa@miswag.com'
 }
 
-  spec.source       = { :git => 'https://github.com/Miswag/MG-Tooltips.git', :tag => '1.1.1' }
+  spec.source       = { :git => 'https://github.com/Miswag/MG-Tooltips.git', :tag => '1.2.0' }
   spec.ios.deployment_target = '13.0'
   spec.swift_version = '5.0'
   spec.source_files  = 'MGTooltips/**/*.swift'
