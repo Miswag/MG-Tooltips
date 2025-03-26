@@ -14,6 +14,7 @@ class MGOverlayView: UIView {
     
     private var cutoutRect: CGRect
     private var cornerRadius: CGFloat
+    private var shouldCut: Bool
     
     // MARK: - Initialization
     
@@ -24,15 +25,18 @@ class MGOverlayView: UIView {
     ///   - overlayColor: The primary overlay color (commonly .black or .label).
     ///   - overlayOpacity: The opacity for the overlay color.
     ///   - cornerRadius: The corner radius for the cutout rectangle.
+    ///   - shouldCut: Whether to create a cutout in the overlay. Default is true.
     init(
         frame: CGRect,
         cutoutRect: CGRect,
         overlayColor: UIColor,
         overlayOpacity: CGFloat,
-        cornerRadius: CGFloat
+        cornerRadius: CGFloat,
+        shouldCut: Bool = true
     ) {
         self.cutoutRect = cutoutRect
         self.cornerRadius = cornerRadius
+        self.shouldCut = shouldCut
         super.init(frame: frame)
         
         backgroundColor = overlayColor.withAlphaComponent(overlayOpacity)
@@ -49,6 +53,11 @@ class MGOverlayView: UIView {
     /// Draws a rectangular path and appends a smaller cutout path, using the even-odd fill rule to create a transparent area.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        
+        // If shouldCut is false, don't create any cutout
+        if !shouldCut {
+            return
+        }
         
         let path = UIBezierPath(rect: rect)
         let cutoutPath = UIBezierPath(roundedRect: cutoutRect, cornerRadius: cornerRadius)
