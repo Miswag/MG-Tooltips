@@ -54,6 +54,11 @@ protocol MGTooltipAppearance {
     /// The configuration of the tooltip buttons (none, nextOnly, or nextAndPrevious).
     var buttonConfiguration: TooltipButtonConfiguration { get }
     
+    /// Determines whether the overlay should cut out the target view area.
+    /// When true, the target view will be visible through the overlay.
+    /// When false, the overlay will cover the entire screen without a cutout.
+    var shouldCutTarget: Bool { get }
+    
     // Custom titles for buttons
     var nextButtonTitle: String { get }
     var previousButtonTitle: String { get }
