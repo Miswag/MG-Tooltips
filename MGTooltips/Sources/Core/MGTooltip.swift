@@ -30,6 +30,10 @@ open class MGTooltip: MGTooltipAppearance {
     public var overlayOpacity: CGFloat = 0.5
     public var buttonConfiguration: TooltipButtonConfiguration = .nextAndPrevious
     
+    /// When true, creates a cutout in the overlay around the target view (default).
+    /// When false, the overlay covers the entire screen without a cutout.
+    public var shouldCutTarget: Bool = true
+    
     // MARK: - Button Titles (Computed with Private Backing)
     
     /// NEXT
@@ -182,15 +186,17 @@ open class MGTooltip: MGTooltipAppearance {
         // 3. Calculate target frame relative to the key window.
         let targetFrame = targetView.convert(targetView.bounds, to: keyWindow)
         
-        // 4. Create a snapshot for highlighting the target.
-        guard let snapshot = createSnapshot(for: targetView, frame: targetFrame) else {
-            proceedToNextTooltip()
-            return
+        // 4. Create a snapshot for highlighting the target (only if shouldCutTarget is true).
+        if shouldCutTarget {
+            guard let snapshot = createSnapshot(for: targetView, frame: targetFrame) else {
+                proceedToNextTooltip()
+                return
+            }
+            keyWindow.addSubview(snapshot)
+            self.snapshotView = snapshot
         }
-        keyWindow.addSubview(snapshot)
-        self.snapshotView = snapshot
         
-        // 5. Create the overlay with a cutout around the target frame.
+        // 5. Create the overlay with a cutout around the target frame if shouldCutTarget is true.
         //    Increase/decrease the inset if you want a bigger highlight region.
         let overlay = createOverlay(in: keyWindow, cutoutRect: targetFrame.insetBy(dx: -4, dy: -4))
         keyWindow.addSubview(overlay)
@@ -209,7 +215,7 @@ open class MGTooltip: MGTooltipAppearance {
             self?.showPreviousTooltip()
         }
         tooltipView.onNext = { [weak self] in
-            self?.showNextTooltip()
+            self?.proceedToNextTooltip()
         }
         
         // 8. Update button states (first or last in the sequence).
@@ -232,23 +238,13 @@ open class MGTooltip: MGTooltipAppearance {
     
     @objc private func overlayTapped() {
         // Move to the next tooltip on screen tap.
-        showNextTooltip()
+        proceedToNextTooltip()
     }
     
     private func showPreviousTooltip() {
         clearTooltipViews()
         currentIndex = max(0, currentIndex - 1)
         showTooltip(at: currentIndex)
-    }
-    
-    private func showNextTooltip() {
-        clearTooltipViews()
-        currentIndex += 1
-        if currentIndex < tooltips.count {
-            showTooltip(at: currentIndex)
-        } else {
-            finishSequence()
-        }
     }
     
     private func proceedToNextTooltip() {
@@ -320,14 +316,15 @@ open class MGTooltip: MGTooltipAppearance {
         return snapshot
     }
     
-    /// Creates a semi-transparent overlay with a cutout around `cutoutRect`.
+    /// Creates a semi-transparent overlay with an optional cutout around `cutoutRect`.
     private func createOverlay(in parent: UIView, cutoutRect: CGRect) -> MGOverlayView {
         let overlay = MGOverlayView(
             frame: parent.bounds,
-            cutoutRect: cutoutRect,
+            cutoutRect: shouldCutTarget ? cutoutRect : .zero,
             overlayColor: overlayColor,
             overlayOpacity: overlayOpacity,
-            cornerRadius: 5
+            cornerRadius: 5,
+            shouldCut: shouldCutTarget
         )
         return overlay
     }

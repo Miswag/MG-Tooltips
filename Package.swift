@@ -19,10 +19,9 @@ let package = Package(
             name: "MGTooltips",
             dependencies: [],
             path: "MGTooltips/Sources",
-            exclude: [TooltipsDemo],
             resources: [
                 .process("Resources/Localizable.xcstrings") 
             ]
-        ),
+        )
     ]
-)
+) 

@@ -31,7 +31,7 @@ https://github.com/user-attachments/assets/8d1cdcc6-e403-494f-b3f3-a0f11b98a3ed
 ### Swift Package Manager
 1. Open your Xcode project.
 2. Go to **File** > **Add Packages...**.
-3. Enter this repo’s URL in the search field.
+3. Enter this repo's URL in the search field.
 4. Select the package and confirm to add it to your project.
 
 **Or just add the following line to your `Package.swift` file:**
@@ -125,6 +125,11 @@ tooltipManager.buttonConfiguration = .nextAndPrevious  // .none, .nextOnly
 tooltipManager.buttonCornerRadius = 12.5
 tooltipManager.buttonBorderWidth = 1
 tooltipManager.buttonBorderColor = .systemBlue
+
+// Control overlay behavior
+tooltipManager.shouldCutTarget = false // Disable cutout in overlay
+tooltipManager.canTapScreenToDismiss = true // Allow tapping anywhere to proceed
+tooltipManager.overlayOpacity = 0.7 // Adjust the opacity of the overlay
 ```
 
 ### Delegate Methods
