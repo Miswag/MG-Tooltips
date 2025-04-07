@@ -188,7 +188,7 @@ class FirstTabViewController: UIViewController {
             TooltipItem(target: leftNavButton.customView ?? leftNavButton as Any, message: "This is the left navigation button.", side: .bottom),
             TooltipItem(target: firstRightNavButton.customView ?? firstRightNavButton as Any, message: "This is the notifications button.", side: .bottom),
             TooltipItem(target: secondRightNavButton.customView ?? secondRightNavButton as Any, message: "This is the settings button.", side: .bottom),
-            TooltipItem(target: titleLabel, message: "This is the main title.", side: .bottom),
+            TooltipItem(target: titleLabel, message: "This is the main title.\n It can span multiple lines.", side: .bottom),
             TooltipItem(target: descriptionLabel, message: "This label provides information.", side: .bottom),
             TooltipItem(target: demoBox, message: "This is a demonstration box.", side: .top),
             TooltipItem(target: tooltipButton, message: "Click here to show tooltips again.", side: .top),

@@ -78,7 +78,12 @@ class MGTooltipView: UIView {
         self.manager = manager
         super.init(frame: .zero)
         
-        messageLabel.text = tooltipItem.message
+        // Clean up whitespace around newlines in the message
+        var cleanedMessage = tooltipItem.message
+        cleanedMessage = cleanedMessage.replacingOccurrences(of: "\\s+\\n", with: "\n", options: .regularExpression)
+        cleanedMessage = cleanedMessage.replacingOccurrences(of: "\\n\\s+", with: "\n", options: .regularExpression)
+        messageLabel.text = cleanedMessage
+        
         setupView() // sets up subviews and constraints
     }
     
@@ -341,7 +346,7 @@ class MGTooltipView: UIView {
             var arrowCenterX = targetMidX - tooltipMinX
             let halfWidth = appearance.arrowSize.width / 2
             
-            // Keep the arrow within the tooltip’s horizontal bounds.
+            // Keep the arrow within the tooltip's horizontal bounds.
             let minX = halfWidth + 8
             let maxX = tooltipFrame.width - halfWidth - 8
             arrowCenterX = max(minX, min(arrowCenterX, maxX))
@@ -354,7 +359,7 @@ class MGTooltipView: UIView {
             var arrowCenterY = targetMidY - tooltipMinY
             let halfHeight = appearance.arrowSize.width / 2
             
-            // Keep the arrow within the tooltip’s vertical bounds.
+            // Keep the arrow within the tooltip's vertical bounds.
             let minY = halfHeight + 8
             let maxY = tooltipFrame.height - halfHeight - 8
             arrowCenterY = max(minY, min(arrowCenterY, maxY))
@@ -416,7 +421,7 @@ class MGTooltipView: UIView {
             constraints.append(centerY)
         }
         
-        // Clamp the tooltip within parentView’s bounds.
+        // Clamp the tooltip within parentView's bounds.
         constraints += [
             leftAnchor.constraint(greaterThanOrEqualTo: parentView.leftAnchor, constant: padding),
             rightAnchor.constraint(lessThanOrEqualTo: parentView.rightAnchor, constant: -padding),
@@ -434,7 +439,7 @@ class MGTooltipView: UIView {
         animateIn()
     }
     
-    /// Updates the display of the previous/next/complete buttons based on the tooltip’s position in the sequence.
+    /// Updates the display of the previous/next/complete buttons based on the tooltip's position in the sequence.
     /// - Parameters:
     ///   - isFirst: True if this is the first tooltip in the sequence.
     ///   - isLast: True if this is the last tooltip in the sequence.
@@ -503,7 +508,7 @@ class MGTooltipView: UIView {
         }
     }
     
-    /// Animates the tooltip’s appearance.
+    /// Animates the tooltip's appearance.
     private func animateIn() {
         alpha = 0
         transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
