@@ -2,9 +2,9 @@
 
 [![Swift Version](https://img.shields.io/badge/swift-5.0-orange)](https://swift.org)
 [![Platform](https://img.shields.io/badge/platform-iOS-orange)](https://developer.apple.com/ios/)
-[![CocoaPods](https://img.shields.io/cocoapods/v/MGTooltips)](https://cocoapods.org/pods/MGTooltips)
 [![UIKit](https://img.shields.io/badge/UIKit-compatible-orange)](https://developer.apple.com/documentation/uikit)
 [![SPM Compatible](https://img.shields.io/badge/SPM-compatible-brightgreen)](https://swift.org/package-manager/)
+[![Version](https://img.shields.io/badge/version-1.3.0-blue)](https://github.com/miswag/mgtooltips/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
 **MGTooltips** is a lightweight, customizable tooltip system for iOS, designed to guide users through app workflows with ease. It supports flexible configurations, seamless animations, and a developer-friendly API.
@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/8d1cdcc6-e403-494f-b3f3-a0f11b98a3ed
 - **Dynamic Arrow Positioning**: Smart arrow positioning to avoid overlapping UI elements.
 - **Localization Support**: Fully localized button titles using String Catalogs `Localizable.xcstrings`. We welcome community contributions for additional language support! If you'd like to help translate MGTooltips into your language, please open a pull request or issue.
 - **Animation Support**: Smooth appearance and disappearance animations.
-- **SPM & CocoaPods**: Easy integration into your project.  
+- **SPM**: Easy integration into your project.  
 
 ---
 
@@ -38,21 +38,8 @@ https://github.com/user-attachments/assets/8d1cdcc6-e403-494f-b3f3-a0f11b98a3ed
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.1.1")
+    .package(url: "https://github.com/miswag/mgtooltips.git", from: "1.3.0")
 ]
-```
-
-### CocoaPods
-
-1. Add the following to your Podfile:
-
-```ruby
-pod "MGTooltips", "1.1.1"
-```
-
-2. Then, run the following command::
-```ruby
-pod install
 ```
 
 ### Manual Installation (Including Demo)
